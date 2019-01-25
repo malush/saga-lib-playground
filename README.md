@@ -32,7 +32,7 @@ To run the app either run the Main.java from your favorite IDE or:
     ```` 
  and change root log level from info to debug
 
-#Saga Pattern
+# Saga Pattern
 A microservices world is polyglot. It involves services written in different languages writing into different databases, not all of which will even understand the concept of ACID transactions, so distributed transactions and 2PC are not recommended. The Saga concept removes the need for a distributed transaction by ensuring that the transaction at each step of the business process has a defined compensating transaction. In this way, if the business process encounters an error condition and is unable to continue, it can execute the compensating transactions for the steps that have already completed. This undoes the work completed so far in the business process and maintains the consistency of the system. 
 
 There are a couple of different ways to implement a saga transaction, but the two most popular are:
