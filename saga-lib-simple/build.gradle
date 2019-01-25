@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.malush.saga-lib-playground'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+mainClassName = 'com.malush.saga.Main'
+
+dependencies {
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.11.1'
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version:'2.9.7'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
+
+}

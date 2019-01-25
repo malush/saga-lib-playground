@@ -1,0 +1,3 @@
+rootProject.name = 'saga-lib-playground'
+include 'saga-lib-simple'
+

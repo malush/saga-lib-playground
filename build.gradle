@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+}
+
+group 'com.malush.account'
+
+project(':saga-lib-simple') {
+    apply plugin: 'java'
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile group: 'com.codebullets.saga-lib', name: 'saga-lib', version: '3.2.0'
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    }
+}
+
+
+task depsize << {
+    def size = 0
+    def formatStr = "%,10.2f"
+    configurations.default.collect { it.length() / (1024 * 1024) }.each { size += it }
+
+    if (size > 0) {
+        size as String
+        def out = new StringBuffer()
+
+        out << 'Total dependencies size:'.padRight(45)
+        out << "${String.format(formatStr, size)} Mb\n\n"
+
+        configurations
+                .default
+                .sort { -it.length() }
+                .each {
+            out << "${it.name}".padRight(45)
+            out << "${String.format(formatStr, (it.length() / 1024))} kb\n"
+        }
+
+        println(out)
+    }
+}
+
+build.finalizedBy(depsize)
